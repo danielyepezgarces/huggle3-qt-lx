@@ -33,7 +33,7 @@ void HuggleWeb::DisplayPage(const QString &url)
 
 void HuggleWeb::RenderHtml(const QString &html)
 {
-    this->ui->webView->setContent(html.toUtf8());
+    this->ui->webView->setContent(html.toUtf8(), "text/html; charset=utf-8");
 }
 
 void HuggleWeb::Click(const QUrl &page)
