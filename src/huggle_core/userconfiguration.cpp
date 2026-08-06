@@ -561,7 +561,7 @@ bool UserConfiguration::Parse(const QString& config, ProjectConfiguration *Proje
 bool UserConfiguration::ParseYAML(const QString &config, ProjectConfiguration *ProjectConfig, bool IsHome, QString *reason)
 {
     // Fetch the YAML
-    std::string config_std = HuggleParser::FetchYAML(config).toStdString();
+    std::string config_std = HuggleParser::FetchYAML(config).toUtf8().toStdString();
     YAML::Node yaml;
     try
     {

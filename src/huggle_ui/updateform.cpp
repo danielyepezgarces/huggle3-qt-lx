@@ -19,7 +19,7 @@
 #ifdef HUGGLE_WIN
 #ifndef HUGGLE_NOUPDATER
 #include <windows.h>
-#include <Shellapi.h>
+#include <shellapi.h>
 #include <tchar.h>
 #include <string>
 #endif

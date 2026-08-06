@@ -512,7 +512,7 @@ bool ProjectConfiguration::ParseYAML(const QString& yaml_src, QString *reason, W
     this->Site = site;
 
     // Fetch the YAML
-    std::string config_std = HuggleParser::FetchYAML(yaml_src).toStdString();
+    std::string config_std = HuggleParser::FetchYAML(yaml_src).toUtf8().toStdString();
     YAML::Node yaml;
     try
     {

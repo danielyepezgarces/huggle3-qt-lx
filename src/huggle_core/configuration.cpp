@@ -478,7 +478,7 @@ void Configuration::SaveSystemConfig()
 
 bool Configuration::ParseGlobalConfig(const QString &config)
 {
-    std::string config_std = FetchYAML(config).toStdString();
+    std::string config_std = FetchYAML(config).toUtf8().toStdString();
     YAML::Node yaml;
     try
     {

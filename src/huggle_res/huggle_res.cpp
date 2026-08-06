@@ -10,13 +10,17 @@
 
 #include "huggle_res.hpp"
 
+int qInitResources_pictures();
+int qInitResources_resources();
+
 using namespace Huggle;
 
 int Huggle_Res::Init()
 {
 #ifdef HUGGLE_WIN
-    extern int qInitResources_pictures();
-    return qInitResources_pictures();
+    qInitResources_pictures();
+    qInitResources_resources();
+    return 0;
 #else
     return -1;
 #endif

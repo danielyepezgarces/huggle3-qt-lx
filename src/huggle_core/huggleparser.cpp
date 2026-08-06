@@ -757,8 +757,8 @@ QString HuggleParser::YAML2String(const QString& key, YAML::Node &node, const QS
         // This is needed for some really weird OSX related bug that randomly segfaults, if we don't make a copy of strings
         std::string temp = node[key.toStdString()].as<std::string>(missing.toStdString());
         if (non_empty)
-            return UserConfig_NonEmpty(key, QString::fromStdString(temp), missing);
-        return QString::fromStdString(temp);
+            return UserConfig_NonEmpty(key, QString::fromUtf8(temp.c_str()), missing);
+        return QString::fromUtf8(temp.c_str());
     } catch (YAML::Exception exception)
     {
         HUGGLE_ERROR("YAML Parsing error (" + key + "): " + QString(exception.what()));
@@ -864,7 +864,7 @@ QStringList HuggleParser::YAML2QStringList(YAML::Node &node, const QStringList& 
         for (auto list_item : node)
         {
             std::string value = list_item.as<std::string>();
-            results << QString::fromStdString(value);
+            results << QString::fromUtf8(value.c_str());
         }
         return results;
     } catch (YAML::Exception exception)
@@ -961,7 +961,7 @@ QHash<QString, QString> HuggleParser::YAML2QStringHash(YAML::Node &node, bool *o
             // This is needed for some really weird OSX related bug that randomly segfaults, if we don't make a copy of strings
             std::string temp1 = it->first.as<std::string>();
             std::string temp2 = it->second.as<std::string>();
-            results.insert(QString::fromStdString(temp1), QString::fromStdString(temp2));
+            results.insert(QString::fromUtf8(temp1.c_str()), QString::fromUtf8(temp2.c_str()));
         }
         return results;
     } catch (YAML::Exception exception)
